@@ -50,6 +50,7 @@
         我们发现使用monkey分析这个APP就闪退，为啥呢？
         下面，我们就到IDA分析工具里去看看是因为啥
         一般我们会想着去APPdelegate 这个方法里找
+        
         `
             - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         `
@@ -64,6 +65,7 @@
         ![](exit.jpg)
         
         仔细看看，这不就exit了，哈哈哈，既然问题找到了，那么我们去hook返回值，返回任何一个他满足的就了
+        
         `
             %hook NSData
                 - (id)SHA1HashString {
@@ -81,6 +83,7 @@
         
         完成以后会出现以下control、Makefile、nplayer1.plist、Tweak.x
         * control
+        
         
         `
             Package: npplayer1 // 包名
@@ -103,6 +106,7 @@
         `
         * Makefile
     
+    
         `
         
             INSTALL_TARGET_PROCESSES = SpringBoard // 安装目标
@@ -117,10 +121,13 @@
             
             include $(THEOS_MAKE_PATH)/tweak.mk
         `
+        
         * nplayer1.plist
         Bundles 里面放着我们需要hook别人的包名，这是一个数组
         * Tweak.x
         我们之前写的代码
+        
+        
         `
         
             %hook NSData
@@ -151,6 +158,8 @@
 * `Filename: ./npplayer1_0.0.1-5+debug_iphoneos-arm.deb` 绝对路径改成相对路径，不然Cydia安装包的时候会出爱心URL错误
 * 执行`bzip2 Packages`,会生成`Packages.bz2`文件
 * 手动创建`Release`文件
+
+
 `
     Origin: 大鱼 软件源™ // Cydia中会显示你的插件源名称
     
