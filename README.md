@@ -52,7 +52,9 @@
         一般我们会想着去APPdelegate 这个方法里找
         
         `
+        
             - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+            - 
         `
         ![](ipacode.jpg)
         
@@ -68,8 +70,11 @@
         
         `
             %hook NSData
+            
                 - (id)SHA1HashString {
+                 
                     return @"edec6530377bd43624058ff21607e542a088435a";
+                    }
                 %end
         `
         ![](change.jpg)
@@ -86,6 +91,7 @@
         
         
         `
+        
             Package: npplayer1 // 包名
             
             Name: nplayer1 // 插件名称
@@ -104,6 +110,7 @@
             
             Section: Tweaks // 区域
         `
+        
         * Makefile
     
     
@@ -161,6 +168,7 @@
 
 
 `
+
     Origin: 大鱼 软件源™ // Cydia中会显示你的插件源名称
     
     Label: EchosDaddy
@@ -183,6 +191,7 @@
 
 
 `
+
         server {
             listen       9999;
             server_name  localhost;
