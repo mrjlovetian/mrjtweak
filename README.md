@@ -61,14 +61,23 @@
         * control
         `
             Package: npplayer1 // 包名
+            
             Name: nplayer1 // 插件名称
+            
             Depends: mobilesubstrate // 依赖的库
+            
             Version: 0.0.1 // 版本号
+            
             Architecture: iphoneos-arm // 框架
+            
             Description: MRJ HOOK! // 插件说明
+            
             Maintainer: MRJ // 维护者
+            
             Author: MRJ // 作者
+            
             Section: Tweaks // 区域
+            
         `
         * Makefile
         `
