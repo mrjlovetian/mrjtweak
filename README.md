@@ -51,8 +51,7 @@
         下面，我们就到IDA分析工具里去看看是因为啥
         一般我们会想着去APPdelegate 这个方法里找
         `
-        
-        - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+            - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         `
         ![](ipacode.jpg)
         
@@ -66,11 +65,10 @@
         
         仔细看看，这不就exit了，哈哈哈，既然问题找到了，那么我们去hook返回值，返回任何一个他满足的就了
         `
-        
-        %hook NSData
-            - (id)SHA1HashString {
-                return @"edec6530377bd43624058ff21607e542a088435a";
-            %end
+            %hook NSData
+                - (id)SHA1HashString {
+                    return @"edec6530377bd43624058ff21607e542a088435a";
+                %end
         `
         ![](change.jpg)
         
@@ -83,6 +81,7 @@
         
         完成以后会出现以下control、Makefile、nplayer1.plist、Tweak.x
         * control
+        
         `
             Package: npplayer1 // 包名
             
@@ -101,16 +100,21 @@
             Author: MRJ // 作者
             
             Section: Tweaks // 区域
-            
         `
         * Makefile
+    
         `
         
             INSTALL_TARGET_PROCESSES = SpringBoard // 安装目标
+            
             include $(THEOS)/makefiles/common.mk // 打包需要文件
+            
             TWEAK_NAME = nplayer1 // 插件名
+            
             nplayer1_FILES = Tweak.x // 就是我们分析别人的代码
+            
             nplayer1_CFLAGS = -fobjc-arc
+            
             include $(THEOS_MAKE_PATH)/tweak.mk
         `
         * nplayer1.plist
@@ -120,12 +124,15 @@
         `
         
             %hook NSData
+            
             - (id)SHA1HashString {
+                
                 return @"edec6530377bd43624058ff21607e542a088435a";
             }
             %end
             
             %hook AdConfig
+            
             + (id)sharedConfig {
                 return nil;
             }
@@ -146,17 +153,26 @@
 * 手动创建`Release`文件
 `
     Origin: 大鱼 软件源™ // Cydia中会显示你的插件源名称
+    
     Label: EchosDaddy
+    
     Suite: stable
+    
     Version: 0.01
+    
     Codename: EchosDaddy
+    
     Architectures: iphoneos-arm
+    
     Components: main
+    
     Description: mrj
 `
 
 ### 最后一步
 将这3个文件放入到你服务器webserver中，作者本人使用Nginx搭建了本地服务
+
+
 `
         server {
             listen       9999;
