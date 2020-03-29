@@ -162,7 +162,7 @@
 * 打开该目录会出现`npplayer1_0.0.1-5+debug_iphoneos-arm.deb` 
 * 执行`dpkg-scanpackages npplayer1_0.0.1-5+debug_iphoneos-arm.deb > Packages`
 * 会出现`Packages`这个文件，这里会有一个坑
-* `Filename: ./npplayer1_0.0.1-5+debug_iphoneos-arm.deb` 绝对路径改成相对路径，不然Cydia安装包的时候会出爱心URL错误
+* `Filename: ./npplayer1_0.0.1-5+debug_iphoneos-arm.deb` 绝对路径改成相对路径，不然Cydia安装包的时候会出现URL错误
 * 执行`bzip2 Packages`,会生成`Packages.bz2`文件
 * 手动创建`Release`文件
 
@@ -213,6 +213,9 @@
 ![](installsource.jpg)
 
 怎么样，nplay的广告木有了
+
+
+![](gongzh.jpg)
 
 
 
